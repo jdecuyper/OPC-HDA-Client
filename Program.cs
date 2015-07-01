@@ -11,11 +11,9 @@ namespace OPC_HDA_Client
         static void Main(string[] args)
         {
             string serverName = "OPCSample.OpcHdaServer";
-            Opc.URL url = new Opc.URL(String.Format("opchda://localhost/{0}", serverName));
-            OpcCom.Factory fact = new OpcCom.Factory();
-            Opc.Hda.Server hdaServer = new Opc.Hda.Server(fact, url);
-            hdaServer.Connect();
-            hdaServer.Disconnect();
+            var hdac = OPCHDA.Client();
+            hdac.Connect(serverName);
+            hdac.Disconnect();
         }
     }
 }
